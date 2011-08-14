@@ -22,17 +22,17 @@ body {
 	overflow: hidden;
 	margin-bottom: 2px; 
 }
-#browser { background: #8C9A20; }
-#browser a.dir { background: #BECD53; color: black; }
-#browser a.file { background: #5A640A; color: white; }
-#playlist { background: #881C46; }
-#playlist a { background: #C44F7C; }
+#browser { background: #aaaaaa; }
+#browser a.dir { background: #696969; color: black; }
+#browser a.file { background: #696969; color: white; }
+#playlist { background: #aaaaaa; }
+#playlist a { background: #696969; }
 #playlist a.playing { background: #3B1E6C; color: white; }
 #browser a:hover, #playlist a:hover { background: #200A46; color: white; }
 #controls { margin-top: 10px; }
 #controls a { 
 	cursor: pointer; 
-	background: #eee; 
+	background: #aaaaaa; 
 	padding: 5px; 
 	border-radius: 5px; 
 }
@@ -115,7 +115,8 @@ function play(el) {
 	var path = $(el).data('file').Path;
 	var url = root+path+'/'+name;
 	$('#playlist a').removeClass('playing');
-	$(el).addClass('playing')
+	$(el).addClass('playing');
+	$('#player').attr('src',url);
 	$('#player').attr('src', url);
 }
 function next() {
@@ -127,14 +128,21 @@ google.setOnLoadCallback(init);
 </script>
 </head>
 <body>
-<audio id="player" controls autoplay autobuffer> 
-<p>What? Your browser doesn't support &lt;audio&gt;?! Lame.</p>
-</audio>
-<div id="browser"></div>
-<div id="playlist"></div>
-<div id="controls">
-<a id="addall">Add all</a>
-<a id="next">Next</a>
-</div>
+
+<table width="1314" border="0" cellpadding="0" cellspacing="0">
+  <!--DWLayoutTable-->
+  <tr>
+    <td width="17" height="534">&nbsp;</td>
+    <td width="1279" valign="top">
+	<div id="browser"></div><div id="playlist"></div>	
+	<embed id="player" src="/f/$.mp3" width="550" height="450"></embed>
+   	<div id="controls">
+      	<a id="addall">Add all</a>
+      	<a id="next">Next</a>
+        </div>
+    </td>
+    <td width="18">&nbsp;</td>
+  </tr>
+</table>
 </body>
 </html>
